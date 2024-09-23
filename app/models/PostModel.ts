@@ -1,5 +1,11 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
  
+export interface IPost {
+  title: string;
+  content: string;
+  author: string;
+}
+
 const Post = new mongoose.Schema(
   {
     title: String,
@@ -9,4 +15,4 @@ const Post = new mongoose.Schema(
   { timestamps: true }
 );
  
-module.exports = mongoose.model('Post', Post)
+module.exports = mongoose.model<IPost>('Post', Post)

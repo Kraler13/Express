@@ -1,7 +1,8 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { title } from "process";
-
+import { IPost } from "./app/models/PostModel";
+import { postController } from "./app/controllers/postController";
 	
 const mongoose = require("mongoose");
 
@@ -20,15 +21,18 @@ type Example = {
   id: string;
 }
 
-app.get("/mongoose/:id", function (req, res) {
-  Post.findById(req.params.id).then((post)=>{
+app.get("/blog", postController.index)
+
+
+app.get("/mongoose/:id", function (req: Request<Example>, res: Response) {
+  Post.findById(req.params.id).then((post: IPost)=>{
     res.render("home", {
       title: post.title,
       content: post.content,
       displayTitle: true,
       names: ["Adam", "Ola", "Kasia", "Tomek"],
     });
-  }).catch((err)=>{
+  }).catch((err: unknown)=>{
     res.send(err)
   })
    
