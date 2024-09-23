@@ -1,0 +1,35 @@
+{
+  "name": "expresexample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "Działa"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kraler13/Express.git"
+  },
+  "keywords": [
+    "Test"
+  ],
+  "author": "Filip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kraler13/Express/issues"
+  },
+  "homepage": "https://github.com/Kraler13/Express#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-handlebars": "^8.0.1",
+    "mongoose": "^8.6.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.5",
+    "nodemon": "^3.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}
