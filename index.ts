@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { title } from "process";
 import { IPost } from "./app/models/PostModel";
-import { postController } from "./app/controllers/postController";
 	
 const mongoose = require("mongoose");
 
@@ -21,7 +20,7 @@ type Example = {
   id: string;
 }
 
-app.get("/blog", postController.index)
+app.get("/blog", postc)
 
 
 app.get("/mongoose/:id", function (req: Request<Example>, res: Response) {
