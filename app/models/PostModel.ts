@@ -1,12 +1,17 @@
-import mongoose from 'mongoose';
- 
+import mongoose from "mongoose";
+
 export interface IPost {
   title: string;
   content: string;
   author: string;
 }
 
-const Post = new mongoose.Schema(
+export interface IPostDocument extends IPost, Document {
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const PostModel = new mongoose.Schema(
   {
     title: String,
     content: String,
@@ -14,5 +19,7 @@ const Post = new mongoose.Schema(
   },
   { timestamps: true }
 );
- 
-module.exports = mongoose.model<IPost>('Post', Post)
+
+const Post = mongoose.model<IPostDocument>("Post", PostModel);
+
+export default Post

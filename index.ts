@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import { title } from "process";
 import { IPost } from "./app/models/PostModel";
+import { postController } from "./app/controllers/postController";
 	
 const mongoose = require("mongoose");
 
@@ -13,17 +13,29 @@ dotenv.config();
 
 const app = express();
 const port = 8080;
-app.engine("hbs", hbs.engine({ extname: ".hbs" }));
+app.engine("hbs", hbs.engine({ extname: ".hbs", 
+  runtimeOptions: {
+  allowProtoPropertiesByDefault: true,
+  allowProtoMethodsByDefault: true,
+}}));
 app.set("view engine", "hbs");
+app.use(express.urlencoded({ extended: true }))
 
 type Example = {
   id: string;
 }
 
-app.get("/blog", postc)
+app.get("/blog", postController.index);
+app.get("/blog/add", (_req: Request, res: Response) => {
+  res.render("blogViews/addPost");
+});
+app.post("/blog/add", postController.create);
+app.get("/blog/:id/edit", postController.editForm);
+app.post("/blog/:id/edit", postController.update);
+app.get("/blog/:id", postController.post);
+app.get("/blog/delete/:id", postController.delete);
 
-
-app.get("/mongoose/:id", function (req: Request<Example>, res: Response) {
+app.get("/mongoose/:id", function (req: Request, res: Response) {
   Post.findById(req.params.id).then((post: IPost)=>{
     res.render("home", {
       title: post.title,
