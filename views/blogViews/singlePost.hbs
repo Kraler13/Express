@@ -6,10 +6,8 @@
             <h2 class="card-title">{{post.title}}</h2>
             <p class="card-text">{{post.content}}</p>
             <p class="card-text">{{post.author}}</p>
-            {{#if _id}}
-            <a href="/blog/{{_id}}/edit" class="btn btn-primary">Edit</a>
-            {{/if}}
-            <a href="/blog/delete/{{_id}}" class="btn btn-danger">Delete</a>
+            <a href="/blog/{{post._id}}/edit" class="btn btn-primary">Edit</a>
+            <a href="/blog/delete/{{post._id}}" class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>

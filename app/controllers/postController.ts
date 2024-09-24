@@ -28,12 +28,16 @@ export const postController = {
   },
   editForm: (req: Request, res: Response) => {
     Post.findById(req.params.id)
-      .then((post) => {
-        res.render("blogViews/editPost", {post});
-      })
-      .catch((err) => {
-        res.send(err);
-      });
+    .lean()
+    .then((post) => {
+      if (!post) {
+        return res.status(404).send("Post not found");
+      }
+      res.render("blogViews/editPost", { post });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
   },
   update: (req: Request, res: Response) => {
     Post.findByIdAndUpdate(req.params.id, req.body)

@@ -1,14 +1,14 @@
 <div class="container">
     <h2>Edit Post</h2>
- 
+
     <form action="/blog/edit/{{post._id}}" method="POST">
         <div class="mb-3">
             <label for="title" class="from-label">Post title</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{title}}" />
+            <input type="text" class="form-control" id="title" name="title" value="{{post.title}}" />
         </div>
         <div class="mb-3">
             <label for="content" class="from-label">Post content</label>
-            <textarea name="content" id="content" class="form-control" rows="3">{{content}}</textarea>
+            <textarea name="content" id="content" class="form-control" rows="3">{{post.content}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
