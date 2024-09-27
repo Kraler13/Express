@@ -1,23 +1,16 @@
-import { Request, Response } from "express";
-import User from "../models/UserModel";
+import express from "express";
+import userController from "../controllers/userController";
 
-export const userRouter = {
-  signupForm: (_req: Request, res: Response) => {
-    res.render("userViews/signup");
-  },
+const router = express.Router();
 
-  signup: (req: Request, res: Response) => {
-    const { name, email, password } = req.body;
-    const newUser = new User({ name, email, password });
+router.get('/signup', (_req, res)=>{
+    res.render('userViews/signUpUser')
+});
 
-    newUser.save()
-      .then(() => {
-        res.redirect("/user/welcome");
-      })
-      .catch((err) => {
-        res.status(500).send(err);
-      });
-  }
-};
+router.post('/signup', userController.signup);
+ 
+router.get('/login', (_req, res)=>{
+    res.render('userViews/loginUser')
+});
 
-export default userRouter;
+export default router;

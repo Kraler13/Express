@@ -1,7 +1,7 @@
-import express, { Express, Request, Response } from "express";
+import express, { Request, Response } from "express";
 import dotenv from "dotenv";
-	
-const mongoose = require("mongoose");
+import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 
 mongoose.connect("mongodb://127.0.0.1:27017/express-blog");
 const Post = require('./app/models/PostModel')
@@ -15,6 +15,7 @@ const port = 8080;
 app.engine("hbs", hbs.engine({ extname: ".hbs"}));
 app.set("view engine", "hbs");
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 type Example = {
   id: string;

@@ -1,5 +1,5 @@
 <div class="container"></div>
-<h2>Add user</h2>
+<h2>LogIn user</h2>
 
 {{#if error}}
 <div class="alert alert-danger" role="alert">
@@ -7,11 +7,7 @@
 </div>
 {{/if}}
 
-<form action="/user/signup" method="POST">
-    <div class="mb-3">
-        <label for="name" class="form-label">User name</label>
-        <input type="text" class="form-control" id="name" name="name" value="{{user.name}}">
-    </div>
+<form action="/user/login" method="POST">
     <div class="mb-3">
         <label for="email" class="form-label">User email</label>
         <input type="email" class="form-control" id="email" name="email" value="{{user.email}}">
